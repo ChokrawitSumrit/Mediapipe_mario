@@ -42,8 +42,8 @@ while cap.isOpened():
         print("Error: Failed to read from the camera")
         break
 
-    frame = cv2.flip(frame, 1)
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frame = cv2.flip(frame, 1) # 1 = Right --> Left   Left --> Right
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) # Change format BGR --> RGB
     results = hands.process(frame_rgb)
 
     right_idx_finger_up = False
@@ -52,7 +52,7 @@ while cap.isOpened():
     left_hand_fist = False
     right_hand_open = False
 
-# Process Handlandmark
+# landmark
     if results.multi_hand_landmarks:
         for hand_landmarks, hand_info in zip(results.multi_hand_landmarks, results.multi_handedness):
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
