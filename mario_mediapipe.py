@@ -1,4 +1,4 @@
-import cv2
+import cv2 #libary อ่านภาพจากล้อง
 import mediapipe as mp
 import pyautogui
 import time
